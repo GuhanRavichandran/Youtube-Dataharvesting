@@ -53,9 +53,14 @@ mydb = mysql.connector.connect(
 )
 print('connected')
 mycursor = mydb.cursor()
-
+st.title(":red[Youtube Data Harvesting]")
+st.caption(":green[Insights of people search]:wink:")
+code='''Main codes(def function
+          if else function
+          for loop function)'''
+st.code(code,language='python')
+st.text('This project demonstrates insights of  people enquiry in youtube')
 with st.sidebar:
-  st.title(":red[Youtube data harvesting]")
   st.header("Take Away codes")
   st.caption("Python Scripting")
   st.caption("Data Collection")
@@ -101,18 +106,21 @@ if st.button("Store to mysql"):
 show_tables=st.radio("select the table for view",("Channels","Videos","comments"))
 
 if show_tables =="Channels": 
+  st.slider("Total subscribers",200,5000000,(10000,500000)) 
   mycursor.execute("select * from channel_data")
   columndata = mycursor.fetchall()
   channel_table = pd.DataFrame(columndata, columns=mycursor.column_names)
-  channels = st.dataframe(channel_table) 
+  channels = st.dataframe(channel_table)
 
 if show_tables=="Videos":
+  st.slider("Total views",2000,1500000000,(200000000,600000000))
   mycursor.execute("select * from video_detail")
   columndata=mycursor.fetchall()
   video_table=pd.DataFrame(columndata,columns=mycursor.column_names)
   videos=st.dataframe(video_table)
-
+  
 if show_tables=="comments":
+  st.slider("Total comments",0,7000,(100,2500))
   mycursor.execute("select * from comment_detail")
   columndata=mycursor.fetchall()
   comment_table=pd.DataFrame(columndata,columns=mycursor.column_names)
