@@ -55,11 +55,8 @@ print('connected')
 mycursor = mydb.cursor()
 st.title(":red[Youtube Data Harvesting]")
 st.caption(":green[Insights of people search]:wink:")
-code='''Main codes(def function
-          if else function
-          for loop function)'''
-st.code(code,language='python')
-st.text('This project demonstrates insights of  people enquiry in youtube')
+st.subheader('This project demonstrates insights of  people enquiry in youtube')
+st.image(r"C:\Users\Hp\Downloads\pile-3d-play-button-logos.jpg", caption="Youtube data collections", use_column_width=True)
 with st.sidebar:
   st.header("Take Away codes")
   st.caption("Python Scripting")
