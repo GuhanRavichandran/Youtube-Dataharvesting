@@ -53,10 +53,45 @@ mydb = mysql.connector.connect(
 )
 print('connected')
 mycursor = mydb.cursor()
+
 st.title(":red[Youtube Data Harvesting]")
 st.caption(":green[Insights of people search]:wink:")
-st.subheader('This project demonstrates insights of  people enquiry in youtube')
+st.subheader(':orange[This project demonstrates insights of  people enquiry in youtube]')
 st.image(r"C:\Users\Hp\Downloads\pile-3d-play-button-logos.jpg", caption="Youtube data collections", use_column_width=True)
+import base64
+
+# Function to convert image to base64
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# Path to your image
+background_image_path = r'C:\Users\Hp\OneDrive\Desktop\youtube image.jpg'
+
+# Convert the image to base64
+base64_image = get_base64_of_bin_file(background_image_path)
+
+# CSS to inject
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] {{
+    background-image: url("data:image/jpg;base64,{base64_image}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}}
+</style>
+"""
+
+# Inject CSS with markdown
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+# Inject CSS with markdown
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+# Inject CSS with markdown
+st.markdown(page_bg_img, unsafe_allow_html=True)
 with st.sidebar:
   st.header("Take Away codes")
   st.caption("Python Scripting")
@@ -64,8 +99,8 @@ with st.sidebar:
   st.caption("API integration")
   st.caption("Data Management using MySQL")
   
-channel_id=st.text_input("Enter the channel ID")
-if st.button("Store to mysql"):
+channel_id=st.text_input(":red[Enter the channel ID]")
+if st.button(":red[Store to mysql]"):
   ch_dtls=channel_data(channel_id)
   channel_details = []
 
@@ -100,7 +135,8 @@ if st.button("Store to mysql"):
 
       print(mycursor.rowcount, "records inserted.")
 
-show_tables=st.radio("select the table for view",("Channels","Videos","comments"))
+show_tables=st.radio(":red[select the table for view]",[":red[Channels]",":red[Videos]",":red[comments]"],index=None,)
+st.write(":red[your selected table:]",show_tables)
 
 if show_tables =="Channels": 
   st.slider("Total subscribers",200,5000000,(10000,500000)) 
@@ -123,7 +159,7 @@ if show_tables=="comments":
   comment_table=pd.DataFrame(columndata,columns=mycursor.column_names)
   comments=st.dataframe(comment_table)
   
-questions=st.selectbox("select your question",("1.What are the names of videos and corresponding channels ?",
+questions=st.selectbox(":red[select your question]",("1.What are the names of videos and corresponding channels ?",
                                                "2.Which channels have the most number of videos,and how many video do they have ?",
                                                "3.What are the top 10 most viewed videos and their respective channels ?",
                                                "4.How many comments were made on each video,and what are their corresponding video names ?",
@@ -206,29 +242,3 @@ if questions=="10.Which videos have the highest number of comments,and what are 
   video_table=pd.DataFrame(columndata,columns=mycursor.column_names)
   df=video_table[["channel_name","title","comments"]]
   st.write(df)
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-    
-
-
-
