@@ -57,7 +57,7 @@ mycursor = mydb.cursor()
 st.title(":red[Youtube Data Harvesting]")
 st.caption(":green[Insights of people search]:wink:")
 st.subheader(':orange[This project demonstrates insights of  people enquiry in youtube]')
-st.image(r"C:\Users\Hp\Downloads\pile-3d-play-button-logos.jpg", caption="Youtube data collections", use_column_width=True)
+st.image(r"C:\Users\Hp\OneDrive\Desktop\demo.py\pile-3d-play-button-logos.jpg", caption="Youtube data collections", use_column_width=True)
 import base64
 
 # Function to convert image to base64
@@ -67,7 +67,7 @@ def get_base64_of_bin_file(bin_file):
     return base64.b64encode(data).decode()
 
 # Path to your image
-background_image_path = r'C:\Users\Hp\OneDrive\Desktop\youtube image.jpg'
+background_image_path = r'C:\Users\Hp\OneDrive\Desktop\demo.py\youtube image.jpg'
 
 # Convert the image to base64
 base64_image = get_base64_of_bin_file(background_image_path)
